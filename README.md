@@ -24,25 +24,25 @@ optional arguments:
                         URL and port for connecting to Neo4j
 ```
 ## Examples
-Running against Notepad++:  
+Running against Notepad++:   
 ```
 python import_vis.py -r "C:\Program Files (x86)\Notepad++" -u neo4j -p neo4j -a bolt://localhost:7687
 ```
-Retrive all nodes using Cypher:
+Retrive all nodes using Cypher:   
 ```
 MATCH (n) RETURN n
 ```
-Gives a graph that looks like: 
-![](images/basic_notepad.png)
-Retrieve all imports from 'notepad++.exe':
+Gives a graph that looks like:    
+![](images/basic_notepad.png)   
+Retrieve all imports from 'notepad++.exe':   
 ```
 MATCH (n) WHERE n.name = 'notepad++.exe' RETURN (n)-[]->()
 ```
-Returns:
-![](images/filter_notepad.png)
-Find all files which import a function named 'CreateDirectoryW':
+Returns:   
+![](images/filter_notepad.png)    
+Find all files which import a function named 'CreateDirectoryW':    
 ```
 MATCH p=(()-[i:IMPORTS]->()) WHERE 'CreateDirectoryW' in i.functions RETURN p
 ```
-For notepad++ returned:
-![](images/find_imports.png)
+For notepad++ returned:   
+![](images/find_imports.png)   
